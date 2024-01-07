@@ -9,7 +9,7 @@ This TP-API-Spotify project is an assignment done in our first semester studying
 
 To run it on your pc, you need to download the **<kbd>repository</kbd>** as a **<kbd>.zip</kbd>** file clicking on **<kbd>Code</kbd>** and then on **<kbd>Download ZIP</kbd>**.
 
-Unzip it and then go to ```TP-API-Spotify/site_web/exec``` and right click in it. Then, click on **Open in the terminal**.
+Unzip it and then go to ```TP-API-Spotify/site_web/exec``` and right click in it. Then, click on **<kbd>Open in the terminal</kbd>**.
 
 In the terminal, write that line and press <kbd>Enter</kbd>:
 ```
