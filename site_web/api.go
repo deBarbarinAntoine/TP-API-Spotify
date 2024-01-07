@@ -139,6 +139,7 @@ func getTrackSdm() TrackData {
 }
 
 func getArtistData(id string) ArtistData {
+	getToken()
 	var data = ArtistData{}
 
 	urlRequest := "https://api.spotify.com/v1/artists/" + id

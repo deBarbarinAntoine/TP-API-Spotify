@@ -7,8 +7,15 @@ type BaseData struct {
 }
 
 type IndexData struct {
-	Base BaseData
-	Test string
+	Base    BaseData
+	Artists []Artist
+}
+
+type Artist struct {
+	Name   string
+	ImgUrl string
+	Title  string
+	Link   string
 }
 
 type AlbumsJulData struct {

@@ -39,6 +39,10 @@
     /* Query-results variables */
     --query-results-margin-ln: calc(var(--header-height) + var(--logo-gap));
 
+    /* Index variables */
+    --index-ctn-width: 42vw;
+    --ind-title-font-size: 2.5rem;
+
     /* Album variables */
     --album-width: calc(calc(calc(100vw - calc(var(--query-results-margin-ln) * 2)) - 20px) * .25);
 
@@ -53,6 +57,7 @@
     :root {
         --title-width: 25vw;
         --header-font-size: calc(1rem + .6vw);
+        --ind-title-font-size: calc(1.5rem + 1.5vw);
     }
 }
 
@@ -62,6 +67,8 @@
         --title-width:  160px;
         --header-font-size: calc(.5rem + 1.5vw);
         --nav-gap: calc(.3rem + 1vw);
+        --index-ctn-width: 70vw;
+        --ind-title-font-size: calc(1.2rem + 1.5vw);
         --track-flex-direction: column;
         --track-align-items: center;
         --track-font-size: calc(.5rem + 1.2vw);
@@ -147,6 +154,79 @@ body {
 
 .ctn {
     padding-top: var(--ctn-padding-top);
+    height: calc(100vh - calc(var(--header-height) * 2));
+    max-height: fit-content;
+}
+
+.index-all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: inherit;
+    padding-top: 3rem;
+    background-image: url("../img/index-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.index-all h1 {
+    padding: 2rem 0;
+    font-size: calc(var(--ind-title-font-size) * 1.2);
+}
+
+.index-all h2 {
+    padding: 2rem 0;
+    font-size: var(--ind-title-font-size);
+}
+
+.index-ctn {
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    height: inherit;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.index-artist:hover {
+    background-color: var(--color-bg-header);
+    color: var(--text-color-header);
+}
+
+.index-artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: var(--index-ctn-width);
+    height: fit-content;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    background-color: var(--color-bg-body);
+    color: var(--text-color-body);
+    margin-bottom: 5rem;
+}
+
+.index-artist a {
+    color: inherit;
+}
+
+.ind-artist-img {
+    display: flex;
+    justify-content: center;
+}
+
+.ind-artist-img img {
+    border-radius: 1.5rem;
+    width: 80%;
+}
+
+.ind-artist-txt {
+    font-size: var(--ind-title-font-size);
+    max-font-size: 2rem;
 }
 
 .banner {
@@ -205,7 +285,7 @@ body {
     color: var(--text-color-header);
 }
 
-.title h1, h2 {
+.title h1, .title h2 {
     background-color: var(--color-bg-header);
     border-radius: 1.5rem;
     border: solid 2px var(--text-color-header);

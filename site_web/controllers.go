@@ -7,12 +7,17 @@ import (
 
 // Root handler redirects to index handler.
 func rootHandler(w http.ResponseWriter, r *http.Request) {
+	jul := getArtistData("3IW7ScrzXmPvZhB27hmfgy")
+	sdm := getArtistData("0LKAV3zJ8a8AIGnyc5OvfB")
 	data := IndexData{Base: BaseData{
 		Title:      "Thorgify - Accueil",
 		StaticPath: "static/",
 		Line:       "enabled",
 	},
-		Test: "Bienvenue sur Thorgify, le meilleur site de streaming musical basé sur l'API de Spotify !",
+		Artists: []Artist{
+			{Name: jul.Name, ImgUrl: jul.Images[0].Url, Title: "Tous les albums de Jul", Link: "/album/jul"},
+			{Name: sdm.Name, ImgUrl: sdm.Images[0].Url, Title: "Bolide Allemand de SDM", Link: "/track/sdm"},
+		},
 	}
 	err := tmpl["index"].ExecuteTemplate(w, "base", data)
 	if err != nil {

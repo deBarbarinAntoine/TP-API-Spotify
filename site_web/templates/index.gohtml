@@ -8,6 +8,22 @@
 {{define "track-line-class"}}{{end}}
 
 {{define "body"}}
-    <h1>Accueil</h1>
-    <div>{{.Test}}</div>
+    <div class="index-all">
+        <h1>Bienvenue sur Thorgify !</h1>
+        <h2>Trouvez votre musique préférée</h2>
+        <div class="index-ctn">
+            {{range .Artists}}
+                <div class="index-artist">
+                    <a href="{{.Link}}" class="ind-artist-link">
+                        <div class="ind-artist-img">
+                            <img src="{{.ImgUrl}}" alt="{{.Name}}'s image">
+                        </div>
+                        <div class="ind-artist-txt">
+                            <div>{{.Title}}</div>
+                        </div>
+                    </a>
+                </div>
+            {{end}}
+        </div>
+    </div>
 {{end}}
