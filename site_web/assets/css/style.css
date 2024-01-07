@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: Calibri;
+}
+
+:root {
+    /* Header variables */
+    --color-bg-header: #5F9EA0;
+    --text-color-header: #9e2064;
+    --header-height: 3rem;
+    --header-font-size: 1.5rem;
+
+        /* Logo */
+    --logo-width: var(--header-height);
+    --logo-gap: .7rem;
+    --logo-span-display: inline;
+
+        /* Nav */
+    --nav-gap: 5vw;
+
+        /* Line */
+    --line-header-height: 5px;
+
+        /* NavLink */
+    --navLink-height:calc(var(--header-height) - calc(var(--line-header-height) * 2));
+
+    /* Body variables */
+    --color-bg-body: #1e1f22;
+    --text-color-body: #FF8C00;
+
+    /* Banner variables */
+    --title-width: 25vw;
+
+    /* Ctn variables */
+    --ctn-padding-top:var(--header-height);
+
+    /* Query-results variables */
+    --query-results-margin-ln: calc(var(--header-height) + var(--logo-gap));
+
+    /* Album variables */
+    --album-width: calc(calc(calc(100vw - calc(var(--query-results-margin-ln) * 2)) - 20px) * .25);
+
+    /* Track variables */
+    --track-flex-direction: row;
+    --track-align-items: normal;
+    --track-img-width: 20rem;
+    --track-font-size: 1.5rem;
+}
+
+@media screen and (min-width: 800px) and (max-width: 1200px){
+    :root {
+        --title-width: 25vw;
+        --header-font-size: calc(1rem + .6vw);
+    }
+}
+
+@media screen and (max-width: 800px) {
+        :root {
+        --logo-span-display: none;
+        --title-width:  160px;
+        --header-font-size: calc(.5rem + 1.5vw);
+        --nav-gap: calc(.3rem + 1vw);
+        --track-flex-direction: column;
+        --track-align-items: center;
+        --track-font-size: calc(.5rem + 1.2vw);
+        --track-img-width: 20vw;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+        :root {
+        --title-width: calc(calc(100vw - 600px) /2 );
+    }
+}
+
+header {
+    position: fixed;
+    z-index: 10;
+    width: 100vw;
+    height: var(--header-height);
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    background-color: var(--color-bg-header);
+    color: var(--text-color-header);
+    box-shadow: 0 4px 4px var(--color-bg-header);
+}
+
+header nav {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    gap: var(--nav-gap);
+}
+
+.navDiv {
+    width: max-content;
+    height: inherit;
+}
+
+.navLink {
+    margin-top: var(--line-header-height);
+    display: flex;
+    align-items: center;
+    height: var(--navLink-height);
+    width: inherit;
+    font-size: var(--header-font-size);
+}
+
+.navLink a {
+    color: var(--text-color-header);
+}
+
+.line {
+    display: flex;
+    align-items: end;
+    height: var(--line-header-height);
+}
+
+.enabled {
+    background-color: var(--text-color-header);
+    border-radius: var(--line-header-height);
+}
+
+.logo {
+    display: flex;
+    gap: var(--logo-gap);
+}
+
+.logo img {
+    width: var(--logo-width);
+}
+
+.logo span {
+    display: var(--logo-span-display);
+    margin: auto 0;
+}
+
+body {
+    background-color: var(--color-bg-body);
+    color: var(--text-color-body);
+}
+
+.ctn {
+    padding-top: var(--ctn-padding-top);
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 25rem;
+    background-color: darkslategrey;
+}
+
+.banner-main-ctn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    height: inherit;
+    width: inherit;
+}
+
+.banner-img {
+    width: 50%;
+    min-width: 400px;
+    max-width: 600px;
+    height: 25rem;
+}
+
+.banner-img img {
+    position: relative;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.banner-img::after {
+    content: '';
+    top: 0;
+    display: block;
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    min-width: 400px;
+    max-width: 600px;
+    -webkit-box-shadow: inset 10px 0 10px darkslategrey, inset -10px 0 10px darkslategrey;
+    -moz-box-shadow: inset 10px 0 10px darkslategrey, inset -10px 0 10px darkslategrey;
+    -o-box-shadow: inset 10px 0 10px darkslategrey, inset -10px 0 10px darkslategrey;
+    box-shadow: inset 10px 0 10px darkslategrey, inset -10px 0 10px darkslategrey;
+}
+
+.title {
+    position: absolute;
+    display: flex;
+    width: var(--title-width);
+    height: inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    color: var(--text-color-header);
+}
+
+.title h1, h2 {
+    background-color: var(--color-bg-header);
+    border-radius: 1.5rem;
+    border: solid 2px var(--text-color-header);
+    padding: 4px 1.7rem;
+
+}
+
+.query-results {
+    display: flex;
+    margin: 3rem var(--query-results-margin-ln);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.album {
+    display: flex;
+    width: var(--album-width);
+    min-width: 465px;
+    height: fit-content;
+    gap: 1rem;
+    padding: .6rem;
+    border-radius: 1rem;
+    background-color: #2b2d30;
+}
+
+.album-img img {
+    border-radius: .5rem;
+}
+
+.album-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.album-info div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.track {
+    display: flex;
+    flex-direction: var(--track-flex-direction);
+    align-items: var(--track-align-items);
+    width: 100%;
+    height: fit-content;
+    padding: 2rem;
+    border-radius: 2rem;
+    background-color: #2b2d30;
+    font-size: var(--track-font-size);
+}
+
+.track-img img {
+    border-radius: .5rem;
+    width: var(--track-img-width);
+}
+
+.track-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.track-info div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.track-info h3 {
+    margin-top: 1rem;
+}
+
+.track-info h3 a {
+    background-color: var(--color-bg-body);
+    border-radius: 1.5rem;
+    border: solid 2px var(--text-color-body);
+    padding: 4px 1.7rem;
+    color: var(--text-color-body);
+}
+
+.track-info h3 a:hover {
+    background-color: var(--color-bg-header);
+    color: var(--text-color-header);
+}

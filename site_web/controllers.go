@@ -7,7 +7,14 @@ import (
 
 // Root handler redirects to index handler.
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-	err := tmpl.ExecuteTemplate(w, "index", nil)
+	data := IndexData{Base: BaseData{
+		Title:      "Thorgify - Accueil",
+		StaticPath: "static/",
+		Line:       "enabled",
+	},
+		Test: "Bienvenue sur Thorgify, le meilleur site de streaming musical basé sur l'API de Spotify !",
+	}
+	err := tmpl["index"].ExecuteTemplate(w, "base", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -15,7 +22,15 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 
 // Index page handler.
 func albumJulHandler(w http.ResponseWriter, r *http.Request) {
-	err := tmpl.ExecuteTemplate(w, "albumJul", nil)
+	data := AlbumsJulData{Base: BaseData{
+		Title:      "Thorgify - Albums",
+		StaticPath: "../static/",
+		Line:       "enabled",
+	},
+		Data:   getAlbumsJul(),
+		Artist: getArtistData("3IW7ScrzXmPvZhB27hmfgy"),
+	}
+	err := tmpl["albumJul"].ExecuteTemplate(w, "base", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -23,7 +38,15 @@ func albumJulHandler(w http.ResponseWriter, r *http.Request) {
 
 // Creating user page handler.
 func trackSdmHandler(w http.ResponseWriter, r *http.Request) {
-	err := tmpl.ExecuteTemplate(w, "trackSdm", nil)
+	data := TrackSdmData{Base: BaseData{
+		Title:      "Thorgify - Morceaux",
+		StaticPath: "../static/",
+		Line:       "enabled",
+	},
+		Data:   getTrackSdm(),
+		Artist: getArtistData("0LKAV3zJ8a8AIGnyc5OvfB"),
+	}
+	err := tmpl["trackSdm"].ExecuteTemplate(w, "base", data)
 	if err != nil {
 		log.Fatal(err)
 	}

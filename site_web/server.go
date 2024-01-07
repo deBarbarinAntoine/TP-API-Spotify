@@ -3,7 +3,6 @@ package spotifyAPI
 import (
 	"fmt"
 	"html/template"
-	"log"
 	"net/http"
 	"os/exec"
 	"path/filepath"
@@ -11,7 +10,7 @@ import (
 	"time"
 )
 
-var tmpl *template.Template
+var tmpl = make(map[string]*template.Template)
 
 var (
 	_, b, _, _ = runtime.Caller(0)
@@ -47,11 +46,10 @@ func runServer() {
 
 // Run is the public function that executes all necessary functions to run the server and website.
 func Run() {
-	var err error
-	tmpl, err = template.ParseGlob(path + "templates/*.html")
-	if err != nil {
-		log.Fatal(err)
-	}
+	tmplPath := path + "templates/"
+	tmpl["index"] = template.Must(template.ParseFiles(tmplPath+"index.gohtml", tmplPath+"base.gohtml"))
+	tmpl["albumJul"] = template.Must(template.ParseFiles(tmplPath+"albumJul.gohtml", tmplPath+"base.gohtml"))
+	tmpl["trackSdm"] = template.Must(template.ParseFiles(tmplPath+"trackSdm.gohtml", tmplPath+"base.gohtml"))
 	routes()
 	fileServer()
 	runServer()
